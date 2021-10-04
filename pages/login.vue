@@ -111,6 +111,7 @@ export default {
   background-size: 100% 100%;
   padding-bottom: 10%;
   min-height: 120vh;
+  background-attachment: fixed;
 }
 
 .content{
