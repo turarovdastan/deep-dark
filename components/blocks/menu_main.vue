@@ -91,6 +91,7 @@ export default {
   background: rgba(0, 0, 0, 0.46);
   padding: 1% 2%;
   width: 100%;
+  height: 60px;
   align-items: center;
   border-bottom: 1px solid;
   border-bottom-color: rgba(255, 255, 255, 0.19);
@@ -165,7 +166,7 @@ export default {
   flex-direction: column;
   position: absolute;
   right: 20px;
-  top: 18px;
+  top: 21px;
   .line{
     width: 100%;
     height: 3px;
@@ -187,11 +188,16 @@ export default {
 }
 }
 
-@media (max-width:450px) {
+@media (max-width:1012px) {
 #header-container{
   justify-content: flex-start;
   gap: 70px;
   align-items: center;
+  #head-lang{
+    position: absolute;
+    top: 22px;
+    right: 75px;
+  }
 }
 }
 
