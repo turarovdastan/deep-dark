@@ -31,29 +31,26 @@
           <div class="button-cont">
             <p >
                 <a >
+                  <img src="@/assets/icons/tg.svg" alt="">
                   <span>Product</span>
                 </a>
                  <a >
+                     <img src="@/assets/icons/tg.svg" alt="">
                   <span>Product</span>
                 </a>
                  <a >
+                     <img src="@/assets/icons/tg.svg" alt="">
                   <span>Product</span>
                 </a>
                  <a >
+                    <img src="@/assets/icons/tg.svg" alt="">
                   <span>Product</span>
                 </a>
                  <a >
+                     <img src="@/assets/icons/tg.svg" alt="">
                   <span>Product</span>
                 </a>
-                 <a >
-                  <span>Product</span>
-                </a>
-                 <a >
-                  <span>Product</span>
-                </a>
-                 <a >
-                  <span>Product</span>
-                </a>
+                
             </p>
           </div>
         </div>
@@ -201,6 +198,10 @@ export default {
           display: flex;
           flex-direction: column;
             a {
+              display: flex;
+              align-items: center;
+              // justify-content: center;
+              gap: 10px;
               text-decoration: none;
               color: #FFFFFF;
               font-family: Axiforma-Regular,serif;
@@ -227,6 +228,16 @@ export default {
             }
           }
         }
+      }
+    }
+     @media (max-width:650px){
+      #footer-menu-container {
+        width: 86%;
+      }
+    }
+    @media (max-width:450px){
+      #footer-menu-container {
+        width: 96%;
       }
     }
   
@@ -269,9 +280,15 @@ export default {
       //float: left;
     }
   }
+  @media (max-width:500px){
+     #footer-keywords-container{
+       display: none;
+     }
+  }
   #footer-copyright-container {
     background-color: #1f1f1f;
     font-family: Axiforma-Regular,serif;
+    padding:20px 0;
     #copyright-container {
       display: block;
       width: 90%;

@@ -104,6 +104,11 @@ export default {
       }
     }
   }
+  @media (max-width:490px) {
+     #actual_airdrops_cont_main{
+       width: 100%;
+     }
+  }
 
 }
 

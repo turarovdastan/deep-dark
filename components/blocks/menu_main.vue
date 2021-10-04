@@ -190,7 +190,7 @@ export default {
 @media (max-width:450px) {
 #header-container{
   justify-content: flex-start;
-  gap: 10px;
+  gap: 70px;
   align-items: center;
 }
 }
