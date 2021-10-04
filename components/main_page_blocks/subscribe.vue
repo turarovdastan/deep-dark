@@ -116,7 +116,6 @@
 #subscription-button {
     background: #21D4FD;
     border-radius: 8px;
-    opacity: 1;
     cursor: pointer;
     width: 100%;
     height: 63px;
