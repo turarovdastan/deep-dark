@@ -20,10 +20,10 @@
       </a>
     </div>
      <div v-if="false" id="head-account">
-      <router-link :to="{ name: 'user_panel' }">Account</router-link>
+      <router-link to="home">Account</router-link>
     </div>
     <div v-else id="head-auth">
-      <router-link :to="{ name: 'auth' }">Sign in</router-link> / <a href="/">Sign up</a>
+      <router-link to="/login">Sign in</router-link> / <router-link to="/login#signup">Sign up</router-link>
     </div>
     <div id="head-socials">
       <a v-for="social in socials" v-bind:key="social['id']" :href="social['link']">
@@ -47,7 +47,7 @@ export default {
     height: 100vh;
     background: rgba(0,0,0,.7);
     position: fixed;
-    z-index: 50;
+    z-index: 30;
     top: 0;
     left:0;
     backdrop-filter: blur(5px);
