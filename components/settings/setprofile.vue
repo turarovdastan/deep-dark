@@ -63,13 +63,13 @@
           
 
         <div class="btns">
-            <div  @click="$emit('success')" class="btn-send">
+            <div  @click="$store.dispatch('modal/setModal','success')" class="btn-send">
                 <span>Send</span>
             </div>
-            <div @click="$emit('support')" class="btn-support">
+            <div @click="$store.dispatch('modal/setModal','support')" class="btn-support">
                 <span>Support</span>
             </div>
-            <div @click="$emit('close')" class="btn-canel">
+            <div @click="$store.dispatch('modal/setModal',false)" class="btn-canel">
                 <span>Cancel</span>
             </div>
         </div>
@@ -79,7 +79,23 @@
 <script>
 export default {
     mounted(){
-        this.$emit('height',900)
+        
+        // this.$emit('height',900)
+        let w = window.matchMedia("(max-width: 600px)").matches
+        if(w){
+            this.$emit('height',1100)
+        }
+        else{
+          
+          this.$emit('height',900)
+        }
+
+        let w1 = window.matchMedia("(max-width: 585px)").matches
+        if(w1){
+            this.$emit('height',1190)
+        }
+
+        
     }
 }
 </script>
@@ -124,6 +140,11 @@ export default {
 
                 color: #FFFFFF;
             }
+            @media (max-width:585px) {
+                .value{
+                    width: 100%;
+                }
+            }
             .label{
                 font-family: LabGrotesque-Regular;
                 font-size: 15px;
@@ -141,6 +162,14 @@ export default {
         }
 
         
+    }
+
+    @media (max-width:924px) {
+        .groups{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 10px;
+        }
     }
     
     .input{
@@ -206,7 +235,6 @@ export default {
         gap: 12px;
         margin-top: 29px;
         .btn-support{
-            width: 185.85px;
             cursor: pointer;
             height: 57px;
             border-radius: 10px;
@@ -233,7 +261,6 @@ export default {
         }
         .btn-send{
             cursor: pointer;
-            width: 185.85px;
             height: 57px;
             background: linear-gradient(262.17deg, #21D4FD -9.98%, #E40ECF 62.2%);
             border-radius: 8px;
@@ -256,7 +283,6 @@ export default {
         }
         .btn-canel{
             cursor: pointer;
-            width: 185.85px;
             height: 57px;
             border: 1px solid #FFFFFF;
             box-sizing: border-box;
@@ -278,6 +304,18 @@ export default {
                 color: #FFFFFF;
 
             }
+        }
+        >div{
+            width: 185.85px;
+        }
+    }
+    @media (max-width:585px) {
+        .btns {
+            flex-direction: column;
+           
+        }
+        .btns>div{
+            width: 100%;
         }
     }
 }

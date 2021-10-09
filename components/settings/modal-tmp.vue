@@ -44,6 +44,12 @@ export default {
     top: 100px;
     bottom: 100px;
 }
+@media (max-width:600px) {
+    .tmp-container{
+        width: 93%;
+        left:3.5%;
+    }
+}
 // ::-webkit-scrollbar {
 //   display: none;
 // }

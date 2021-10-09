@@ -28,20 +28,23 @@
         <option class="lang_option">RU</option>
       </select>
     </div>
-    <div v-if="auth" @dblclick="$router.push('/home')" id="head-auth">
-        <img @click="mini_modal=!mini_modal" src="@/assets/icon.svg" alt="">
-        <MiniModal  v-if="mini_modal"/>
+    <div v-if="auth" @click="$router.push('/home')" ref="auth" id="head-auth">
+        <img  @mouseover="mini_modal=true"  src="@/assets/icon.svg" alt="">
     </div>
+
     <div v-else id="head-auth">
       <router-link to="/login">Sign in</router-link> / <router-link to="/login#signup">Sign up</router-link>
     </div>
+    
+    <MiniModal @mouseleave.native="mini_modal=false"  v-if="mm2 || mm"  />
+
     <div @click="modal=true" class="menu">
       <div class="line"></div>
       <div class="line"></div>
       <div class="line shot"></div>
     </div>
     <transition name="slide-fade">
-    <modal v-if="modal" @close="modal=false" :socials="socials"/>
+      <modal v-if="!mm && modal" @close="modal=false"  :socials="socials"/>
     </transition>
   </div>
 </template>
@@ -62,10 +65,36 @@ export default {
       ],
       modal:false,
       languages: [],
-      mini_modal:false,
-      auth:false
+      auth:true,
+      mini_modal:false
     }
   },
+  mounted(){
+    const t = this
+      // document.addEventListener('mousemove', function(e){
+        
+      //   if((e.target.closest('#head-auth'))){
+      //       t.mini_modal = true
+      //   }
+      //   else if(t.mini_modal && (!e.target.closest('.mini_modal') ||  !(e.target.closest('#head-auth')))){
+      //     t.mini_modal = false
+      //   }else if(e.target.closest('.mini_modal')){
+      //     t.mini_modal = true
+      //   }else{
+      //     t.mini_modal = true
+      //   }
+        
+      // });
+  },
+  computed:{
+     mm(){
+            return this.$store.getters['modal/modal']
+        },
+        mm2(){
+          return this.mini_modal
+        }
+  },
+
  
   components:{
     Modal,
@@ -181,13 +210,14 @@ export default {
 }
 
   @media (max-width:1012px) {
- #main-menu, #head-auth,#head-socials{
+ #main-menu,#head-auth, #head-socials{
     display: none;
   }
   .menu{
     display: flex;
   }
 }
+
 }
 
 @media (max-width:1012px) {

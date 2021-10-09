@@ -15,10 +15,10 @@
         </div>
 
         <div class="btns">
-            <div @click="$emit('success')" class="btn-send">
+            <div @click="$store.dispatch('modal/setModal','success')" class="btn-send">
                 <span>Send</span>
             </div>
-            <div @click="$emit('close')" class="btn-canel">
+            <div @click="$store.dispatch('modal/setModal',false)" class="btn-canel">
                 <span>Cancel</span>
             </div>
         </div>
@@ -28,7 +28,13 @@
 <script>
 export default {
     mounted(){
+        let w = window.matchMedia("(max-width: 524px)").matches
+        if(w){
+        this.$emit('height',740)
+
+        }else{
         this.$emit('height',700)
+        }
     }
 }
 </script>
@@ -90,9 +96,11 @@ export default {
         display: flex;
         gap: 12px;
         margin-top: 29px;
+        >div{
+            width: 185.85px;
+        }
         .btn-send{
             cursor: pointer;
-            width: 185.85px;
             height: 57px;
             background: linear-gradient(262.17deg, #21D4FD -9.98%, #E40ECF 62.2%);
             border-radius: 8px;
@@ -115,7 +123,6 @@ export default {
         }
         .btn-canel{
             cursor: pointer;
-            width: 185.85px;
             height: 57px;
             border: 1px solid #FFFFFF;
             box-sizing: border-box;
@@ -136,6 +143,15 @@ export default {
 
                 color: #FFFFFF;
 
+            }
+        }
+    }
+
+    @media (max-width:524px) {
+        .btns{
+            flex-direction: column;
+            >div{
+                width: 100%;
             }
         }
     }

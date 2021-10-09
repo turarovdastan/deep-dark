@@ -35,6 +35,9 @@ export default {
     completed_airdrops,
     subscribe,
     menu_main
+  },
+  mounted(){
+  
   }
 }
 </script>

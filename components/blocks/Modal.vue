@@ -19,8 +19,9 @@
         Block Explorer
       </a>
     </div>
-     <div v-if="false" id="head-account">
-      <router-link to="home">Account</router-link>
+     <div v-if="auth" id="head-account">
+      <strong @click="$store.dispatch('modal/setModal','settings')" >Account settings</strong> <br>
+       <strong @click="$store.dispatch('modal/setModal','support')">Account relogin</strong>
     </div>
     <div v-else id="head-auth">
       <router-link to="/login">Sign in</router-link> / <router-link to="/login#signup">Sign up</router-link>
@@ -37,7 +38,10 @@
 
 <script>
 export default {
-    props:['socials']
+    props:['socials'],
+    data:()=>({
+      auth:true
+    })
 }
 </script>
 
@@ -97,7 +101,8 @@ export default {
     color: #FFFFFF;
     font-weight: 800;
     font-size: 14px;
-    a {
+    a,span,strong {
+      cursor: pointer;
       color: #FFFFFF;
       font-family: Axiforma-Regular,serif;
       text-decoration: none;
