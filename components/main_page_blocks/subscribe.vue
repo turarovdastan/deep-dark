@@ -53,7 +53,7 @@
      justify-content: center;
      #subscribe-form {
        background: linear-gradient(180deg, rgba(7, 196, 239, 0.61) 0%, rgba(7, 196, 239, 0.25) 100%);
-       opacity: 0.59;
+       opacity:1;
        z-index: 0;
        border-radius: 8px;
        height: 182px;
@@ -114,8 +114,9 @@
  }
 }
 #subscription-button {
-    background: #21D4FD;
+    background: rgb(0, 208, 255);
     border-radius: 8px;
+    opacity: 1;
     cursor: pointer;
     width: 100%;
     height: 63px;

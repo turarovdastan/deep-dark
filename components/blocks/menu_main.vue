@@ -1,7 +1,7 @@
 <template>
   <div id="header-container">
     <div id="head-logo">
-      <img :src="logo" alt="foil.network">
+      <img @click="$router.push('/')" :src="logo" alt="foil.network">
     </div>
     <div id="main-menu">
         <a class="main-menu-button-link">
@@ -28,11 +28,12 @@
         <option class="lang_option">RU</option>
       </select>
     </div>
-    <div v-if="false" id="head-account">
-      <router-link :to="{ name: 'user_panel' }">Account</router-link>
+    <div v-if="auth" @dblclick="$router.push('/home')" id="head-auth">
+        <img @click="mini_modal=!mini_modal" src="@/assets/icon.svg" alt="">
+        <MiniModal  v-if="mini_modal"/>
     </div>
     <div v-else id="head-auth">
-      <router-link :to="{ name: 'auth' }">Sign in</router-link> / <a href="/">Sign up</a>
+      <router-link to="/login">Sign in</router-link> / <router-link to="/login#signup">Sign up</router-link>
     </div>
     <div @click="modal=true" class="menu">
       <div class="line"></div>
@@ -48,6 +49,7 @@
 <script>
 import logo from '@/assets/logo.svg'
 import Modal  from './Modal.vue'
+import MiniModal from './mini-modal.vue'
 export default {
   name: "menu_main",
   data() {
@@ -60,14 +62,14 @@ export default {
       ],
       modal:false,
       languages: [],
-      sign: false,
-      auth_buttons: {
-
-      }
+      mini_modal:false,
+      auth:false
     }
   },
+ 
   components:{
-    Modal
+    Modal,
+    MiniModal
   }
 }
 </script>

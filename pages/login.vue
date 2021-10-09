@@ -75,17 +75,43 @@
         </div>
       </div>
     </div>
+    <!-- modal sign up -->
+      <signuptmp v-if="check">
+        <signup1 v-if="current===0" @next="current+=1"/>
+        <signup2 v-if="current===1" @next="current+=1" />
+        <signup3 v-if="current===2" @next="current+=1" />
+        <success v-if="current===3" />
+      </signuptmp>
+    <!-- end modal -->
   </div>
 </template>
 
 <script>
 import menu_main from "@/components/blocks/menu_main";
+import signuptmp from '@/components/login/signuptmp'
+import signup1 from '@/components/login/signup-1'
+import signup2 from '@/components/login/signup-2'
+import signup3 from '@/components/login/signup-3'
+import success from '@/components/login/success'
 
 export default {
   name: "SignIn",
   layout:'empty',
+  data:()=>({
+    current:0
+  }),
+  computed:{
+    check(){
+      return this.$route.hash
+    }
+  },
   components: {
-    menu_main
+    menu_main,
+    signuptmp,
+    signup1,
+    signup2,
+    signup3,
+    success
   }
 }
 </script>
